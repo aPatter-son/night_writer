@@ -29,7 +29,6 @@ class NightWriter
 
   def translate(new)
     new.each do |letter|
-      require "pry"; binding.pry
     end
 
   end
@@ -42,15 +41,25 @@ class NightWriter
   # end
 
   def character_count
-    count = 0
-    message_array = splits
-
-    message_array.each do |word|
-      count += word.length
+    input = File.open(@input_file).read
+    array = input.split
+    new = []
+    array.map do |word|
+      new << word.split("")
     end
+    count = 0
+    new.each do |word|
+      count += word.count
+    end
+
     count
+  end
+
+  def banner
+    p "Created #{@output_file} containing #{character_count} characters"
   end
 end
 
 
 NightWriter.new.split
+NightWriter.new.banner
