@@ -1,3 +1,5 @@
+# require './lib/night_writer'
+# require './lib/dictionary'
 
 class NightWriter
 
@@ -27,19 +29,6 @@ class NightWriter
     create(new)
   end
 
-  def translate(new)
-    new.each do |letter|
-    end
-
-  end
-
-  # def splits
-  #   message = '1 2 3 4'
-  #   split_array = []
-  #   split_array << message.split(" ")
-  #   split_array.flatten
-  # end
-
   def character_count
     input = File.open(@input_file).read
     array = input.split
@@ -58,8 +47,22 @@ class NightWriter
   def banner
     p "Created #{@output_file} containing #{character_count} characters"
   end
+
+  # def match_value(let)
+  #   match = []
+  #
+  #   @dictionary.each do |line|
+  #     line.select do |letter|
+  #       if let == letter
+  #         match = @dictionary[letter]
+  #       end
+  #     end
+  #   end
+  #   p match
+  # end
 end
 
 
 NightWriter.new.split
 NightWriter.new.banner
+# NightWriter.new.match_value("a")
